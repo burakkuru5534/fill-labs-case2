@@ -34,5 +34,5 @@ func main() {
 		errors.New("init app error.")
 	}
 
-	service.StartHttpService(8080, api.HttpService())
+	service.StartHttpService(8081, api.HttpService())
 }
