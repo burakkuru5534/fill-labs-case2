@@ -5,7 +5,7 @@ import (
 )
 
 type Usr struct {
-	ID    int    `json:"id"`
+	ID    int64  `json:"id"`
 	Email string `json:"email"`
 }
 
@@ -52,7 +52,7 @@ func (u *Usr) Get(id int64) error {
 
 func (u *Usr) GetAll() ([]Usr, error) {
 
-	rows, err := helper.App.DB.Query("SELECT email FROM usr")
+	rows, err := helper.App.DB.Query("SELECT id,email FROM usr")
 	if err != nil {
 		return nil, err
 	}
@@ -64,7 +64,7 @@ func (u *Usr) GetAll() ([]Usr, error) {
 	// Loop through rows, using Scan to assign column data to struct fields.
 	for rows.Next() {
 		var usr Usr
-		if err := rows.Scan(&usr.Email); err != nil {
+		if err := rows.Scan(&usr.ID, &usr.Email); err != nil {
 			return usrs, err
 		}
 		usrs = append(usrs, usr)

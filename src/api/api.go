@@ -38,8 +38,10 @@ func UserCreate(w http.ResponseWriter, r *http.Request) {
 
 	respBody := struct {
 		Email string `json:"email"`
+		ID    int64  `json:"id"`
 	}{
 		Email: usr.Email,
+		ID:    usr.ID,
 	}
 
 	json.NewEncoder(w).Encode(respBody)
