@@ -37,12 +37,8 @@ func UserCreate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	respBody := struct {
-		ID    int    `json:"id"`
-		Name  string `json:"name"`
 		Email string `json:"email"`
 	}{
-		ID:    usr.ID,
-		Name:  usr.Name,
 		Email: usr.Email,
 	}
 
@@ -90,12 +86,8 @@ func UserUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	respBody := struct {
-		ID    int64  `json:"id"`
-		Name  string `json:"name"`
 		Email string `json:"email"`
 	}{
-		ID:    id,
-		Name:  usr.Name,
 		Email: usr.Email,
 	}
 	json.NewEncoder(w).Encode(respBody)
@@ -155,12 +147,8 @@ func UserGet(w http.ResponseWriter, r *http.Request) {
 	}
 
 	respBody := struct {
-		ID    int64  `json:"id"`
-		Name  string `json:"name"`
 		Email string `json:"email"`
 	}{
-		ID:    id,
-		Name:  usr.Name,
 		Email: usr.Email,
 	}
 	json.NewEncoder(w).Encode(respBody)
