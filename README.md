@@ -25,8 +25,6 @@ Tables created:
 table name:usr
 columns:
 id: serial primary key
-name: text
-password: text
 email: text (unique)
 
 ## Problem solution
@@ -46,9 +44,9 @@ request Body Example:
 
  ```json
 {
-  "name": "Burak KURU",
-  "email": "burak.kuru@gmail.com",
-  "password": "test123456"
+ 
+  "email": "burak.kuru@gmail.com"
+  
 }
  ```
 
@@ -59,7 +57,6 @@ for 200:
  ```json
 {
   "id": 1,
-  "name": "Burak KURU",
   "email": "burak.kuru@gmail.com"
 }
  ```
@@ -98,7 +95,6 @@ for 200:
  ```json
 {
   "id": 1,
-  "name": "Burak KURU",
   "email": "burak.kuru@gmail.com"
 }
  ```
@@ -131,9 +127,7 @@ request Body Example:
 
  ```json
 {
-  "name":"Updated Name",
   "email":"updatedemail@gmail.com",
-  "password":"updatedPass"
 }
  ```
 
@@ -143,9 +137,7 @@ for 200:
  ```json
 {
   "id": 1,
-  "name":"Updated Name",
-  "email":"updatedemail@gmail.com",
-  "password":"updatedPass"
+  "email":"updatedemail@gmail.com"
 }
  ```
 
@@ -212,9 +204,9 @@ response example:
 for 200:
  ```json
 [{
-  "name":"Updated Name",
+  
   "email":"updatedemail@gmail.com",
-  "password":"updatedPass"
+  
 }]
  ```
 for 400:
@@ -239,8 +231,6 @@ go test -v
 ## Conclusion
 
 We have successfully implemented the user management service.
-
-note: I was going to use chi router to get id from url but I couldn't get it to work for testing library. So I used query params instead.
 
 
 
