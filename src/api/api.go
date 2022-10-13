@@ -88,9 +88,11 @@ func UserUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	respBody := struct {
+		ID    int64  `json:"id"`
 		Email string `json:"email"`
 	}{
 		Email: usr.Email,
+		ID:    id,
 	}
 	json.NewEncoder(w).Encode(respBody)
 
