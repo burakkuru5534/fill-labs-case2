@@ -78,7 +78,7 @@ func TestList(t *testing.T) {
 				status, http.StatusOK)
 		}
 	} else {
-		expected := `[{"id":36,"name":"burak3","email":"testemail2@gmail.com","password":""},{"id":38,"name":"burak2","email":"testemail7@gmail.com","password":""},{"id":34,"name":"burak3","email":"testemail77@gmail.com","password":""}]
+		expected := `[{"id":36,"email":"testemail2@gmail.com"}]
 `
 		if rr.Body.String() != expected {
 			t.Errorf("handler returned unexpected body: got %v want %v",
@@ -115,7 +115,7 @@ func TestCreate(t *testing.T) {
 		errors.New("init app error.")
 	}
 
-	var jsonStr = []byte(`{"name":"burak2","email":"testemail7@gmail.com","password":"testbrk"}`)
+	var jsonStr = []byte(`{"email":"testemail7@gmail.com"}`)
 
 	req, err := http.NewRequest("POST", "/api/users", bytes.NewBuffer(jsonStr))
 	if err != nil {
@@ -166,7 +166,7 @@ func TestCreate(t *testing.T) {
 			errors.New("get id error.")
 		}
 
-		expected := fmt.Sprintf(`{"id":%d,"name":"burak2","email":"testemail7@gmail.com"}
+		expected := fmt.Sprintf(`{"id":%d,"email":"testemail7@gmail.com"}
 `, id)
 		if rr.Body.String() != expected {
 			t.Errorf("handler returned unexpected body: got %v want %v",
@@ -246,7 +246,7 @@ func TestGet(t *testing.T) {
 				status, http.StatusOK)
 		}
 	} else {
-		expected := `{"id":22,"name":"burak","email":"testemail@gmail.com"}
+		expected := `{"id":22,"email":"testemail@gmail.com"}
 `
 		if rr.Body.String() != expected {
 			t.Errorf("handler returned unexpected body: got %v want %v",
@@ -365,7 +365,7 @@ func TestUpdate(t *testing.T) {
 		errors.New("init app error.")
 	}
 
-	var jsonStr = []byte(`{"name":"burak3","email":"testemail77@gmail.com","password":"testbrk"}`)
+	var jsonStr = []byte(`{"email":"testemail77@gmail.com"}`)
 
 	req, err := http.NewRequest("PATCH", "/api/users", bytes.NewBuffer(jsonStr))
 	if err != nil {
@@ -413,7 +413,7 @@ func TestUpdate(t *testing.T) {
 				status, http.StatusOK)
 		}
 	} else {
-		expected := fmt.Sprintf(`{"id":34,"name":"burak3","email":"testemail77@gmail.com"}
+		expected := fmt.Sprintf(`{"id":34,"email":"testemail77@gmail.com"}
 `)
 		if rr.Body.String() != expected {
 			t.Errorf("handler returned unexpected body: got %v want %v",
